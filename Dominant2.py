@@ -43,7 +43,10 @@ def RangRas(o):
                 minimum = d
                 cname = csv.loc[i,"color_name"]
                 e.append(csv.loc[i,"color_name"])
-        #print(cname)
+        print(cname)
     index_max = np.argmax(counts)
     #print('Dominant: %s (#%s)' % (peak, colour))
-    return(codes)
+    #return(codes)
+
+img = input("Image Name: ")
+RangRas(img)
