@@ -14,17 +14,12 @@ def RangRas(o):
 
     NUM_CLUSTERS = 5
 
-    #print('reading image')
     im = Image.open(o)
-    #im = im.resize((150, 150))      # optional, to reduce time
     ar = np.asarray(im)
     shape = ar.shape
     ar = ar.reshape(np.product(shape[:2]), shape[2]).astype(float)
     e = list()
-
-    #print('finding clusters')
     codes, dist = scipy.cluster.vq.kmeans(ar, NUM_CLUSTERS)
-    #print('Colors:\n', codes)
 
     vecs, dist = scipy.cluster.vq.vq(ar, codes)         # assign codes
     counts, bins = np.histogram(vecs, len(codes))    # count occurrences
@@ -45,8 +40,7 @@ def RangRas(o):
                 e.append(csv.loc[i,"color_name"])
         print(cname)
     index_max = np.argmax(counts)
-    #print('Dominant: %s (#%s)' % (peak, colour))
-    #return(codes)
+
 
 img = input("Image Name: ")
 RangRas(img)
